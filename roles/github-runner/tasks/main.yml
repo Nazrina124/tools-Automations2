@@ -6,10 +6,10 @@
 - name: Setup Prompt
   ansible.builtin.shell: set-prompt github-runner
 
-- name: Add github runner user
-  ansible.builtin.user:
-    name: grunner
-
+- name: Setup LVM Disk size
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: lvm
 
 - name: Add Github Runner User
   ansible.builtin.user:
@@ -84,5 +84,4 @@
     state: latest
 
 - name: Install Ansible
-  ansible.builtin.shell: pip3 install ansible
-  ####
+  ansible.builtin.shell: pip-3.11 install ansible
